@@ -11,6 +11,14 @@ Get the latest rable version of ruby with `rbenv`
 * ruby 3.1.2
 * Rails 7.0.2.4
 
+## Start the blog
+```ruby
+rails db:migrate
+rails db:seed       # Optional, populates the db with data
+bundle install
+rails s
+```
+
 # Blog creation tutorial
 ## Setup the project - Phase 1
 *This is a high level overview of the steps taken to create the blog*
@@ -27,7 +35,7 @@ rails new rails7_blog
 bundle install
 ```
 
-- Generate view and controller
+- Generate view, controller and route
 
 ```
 rails g controller pages home about
@@ -40,13 +48,13 @@ rails s
 ```
 
 - Add bootstrap 5
-- Set root_path
+- Edit routes and set root_path
 - Edit and link home and about page
   Use rails `link_to` instead of html's href to link pages
-- Add a navbar `_navbar.html.erb` from bootstrap 5
+- Add a navbar `_navbar.html.erb` from bootstrap 5 and edit it
 
 ## Create blog posts - Phase 2
-- Generate scaffold
+- Generate scaffold (Generates all the things)
 ```
 rails g scaffold post title:string body:text
 ```
@@ -123,7 +131,21 @@ irb(main):021:0> @post
 
 ```
 
-- To exit the console press `ctrl + d` or type `exit`
+* To exit the console press `ctrl + d` or type `exit`
+
+* Link posts in the navbar
+* Make posts pages and sub pages look prettier
+* Add post validation in `./app/models/post.rb`
+
+* Autogenerate Database data
+Add `Post.create` in a loop and save it in `./db/seeds.rb`
+
+```ruby
+rails db:drop       # Drop/delete db
+rails db:migrate    # Create database and tables
+rails db:seed       # Populate db with data
+```
+
 
 
 # Otherthings to add
